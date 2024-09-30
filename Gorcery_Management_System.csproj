@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access.cs" />
+    <Compile Include="CustomerDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerDashBoard.Designer.cs">
+      <DependentUpon>CustomerDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="GuestProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CustomerDashBoard.resx">
+      <DependentUpon>CustomerDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GuestProduct.resx">
       <DependentUpon>GuestProduct.cs</DependentUpon>
     </EmbeddedResource>

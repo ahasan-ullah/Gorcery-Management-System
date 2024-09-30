@@ -60,6 +60,7 @@ namespace Gorcery_Management_System
             this.productImageBox = new System.Windows.Forms.PictureBox();
             this.btnProductUpload = new System.Windows.Forms.Button();
             this.productsPanel = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.txtProductStock = new System.Windows.Forms.TextBox();
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.btnProfileUpload = new System.Windows.Forms.Button();
@@ -77,7 +78,6 @@ namespace Gorcery_Management_System
             this.txtProfileShop = new System.Windows.Forms.TextBox();
             this.btnProfileUpdate = new System.Windows.Forms.Button();
             this.profilePanel = new System.Windows.Forms.Panel();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.sidePanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -128,7 +128,7 @@ namespace Gorcery_Management_System
             // 
             this.salesmanUsernameLabel.AutoSize = true;
             this.salesmanUsernameLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salesmanUsernameLabel.Location = new System.Drawing.Point(34, 10);
+            this.salesmanUsernameLabel.Location = new System.Drawing.Point(25, 9);
             this.salesmanUsernameLabel.Name = "salesmanUsernameLabel";
             this.salesmanUsernameLabel.Size = new System.Drawing.Size(225, 29);
             this.salesmanUsernameLabel.TabIndex = 2;
@@ -443,6 +443,21 @@ namespace Gorcery_Management_System
             this.productsPanel.Size = new System.Drawing.Size(951, 683);
             this.productsPanel.TabIndex = 0;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Location = new System.Drawing.Point(429, 19);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(96, 39);
+            this.btnRefresh.TabIndex = 26;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // txtProductStock
             // 
             this.txtProductStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -638,21 +653,6 @@ namespace Gorcery_Management_System
             this.profilePanel.Name = "profilePanel";
             this.profilePanel.Size = new System.Drawing.Size(915, 644);
             this.profilePanel.TabIndex = 25;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(429, 19);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(96, 39);
-            this.btnRefresh.TabIndex = 26;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // SalesmanDashboard
             // 

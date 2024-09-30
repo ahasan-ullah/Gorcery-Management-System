@@ -58,7 +58,8 @@ namespace Gorcery_Management_System
                 {
                     if (type == "Customer")
                     {
-                        //
+                        this.Hide();
+                        new CustomerDashBoard(id).Show();
                     }
                     else if (type == "Salesman")
                     {

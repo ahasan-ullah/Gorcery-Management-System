@@ -46,7 +46,7 @@ namespace Gorcery_Management_System
 
         private void ProductInfoClear()
         {
-            txtID.Text = "";10
+            txtID.Text = "";
             txtProductName.Text = "";
             rtxtProductDesc.Text = "";
             txtProductPrice.Text = "";
