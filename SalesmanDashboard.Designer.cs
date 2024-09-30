@@ -37,6 +37,12 @@ namespace Gorcery_Management_System
             this.sellerLabel = new System.Windows.Forms.Label();
             this.upperPanel = new System.Windows.Forms.Panel();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.P_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.P_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.P_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.P_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.P_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.P_Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameLabel = new System.Windows.Forms.Label();
             this.txtProductName = new System.Windows.Forms.TextBox();
             this.descLabel = new System.Windows.Forms.Label();
@@ -71,6 +77,7 @@ namespace Gorcery_Management_System
             this.txtProfileShop = new System.Windows.Forms.TextBox();
             this.btnProfileUpdate = new System.Windows.Forms.Button();
             this.profilePanel = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.sidePanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -150,10 +157,21 @@ namespace Gorcery_Management_System
             // 
             // dgvProducts
             // 
+            this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AllowUserToDeleteRows = false;
+            this.dgvProducts.AllowUserToResizeColumns = false;
+            this.dgvProducts.AllowUserToResizeRows = false;
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducts.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProducts.ColumnHeadersHeight = 29;
+            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.P_ID,
+            this.P_Name,
+            this.P_Description,
+            this.P_Price,
+            this.P_Type,
+            this.P_Stock});
             this.dgvProducts.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvProducts.Location = new System.Drawing.Point(20, 162);
             this.dgvProducts.MultiSelect = false;
@@ -166,6 +184,54 @@ namespace Gorcery_Management_System
             this.dgvProducts.Size = new System.Drawing.Size(609, 501);
             this.dgvProducts.TabIndex = 0;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
+            // 
+            // P_ID
+            // 
+            this.P_ID.DataPropertyName = "P_ID";
+            this.P_ID.HeaderText = "ID";
+            this.P_ID.MinimumWidth = 6;
+            this.P_ID.Name = "P_ID";
+            this.P_ID.ReadOnly = true;
+            // 
+            // P_Name
+            // 
+            this.P_Name.DataPropertyName = "P_Name";
+            this.P_Name.HeaderText = "Name";
+            this.P_Name.MinimumWidth = 6;
+            this.P_Name.Name = "P_Name";
+            this.P_Name.ReadOnly = true;
+            // 
+            // P_Description
+            // 
+            this.P_Description.DataPropertyName = "P_Description";
+            this.P_Description.HeaderText = "Description";
+            this.P_Description.MinimumWidth = 6;
+            this.P_Description.Name = "P_Description";
+            this.P_Description.ReadOnly = true;
+            // 
+            // P_Price
+            // 
+            this.P_Price.DataPropertyName = "P_Price";
+            this.P_Price.HeaderText = "Price";
+            this.P_Price.MinimumWidth = 6;
+            this.P_Price.Name = "P_Price";
+            this.P_Price.ReadOnly = true;
+            // 
+            // P_Type
+            // 
+            this.P_Type.DataPropertyName = "P_Type";
+            this.P_Type.HeaderText = "Type";
+            this.P_Type.MinimumWidth = 6;
+            this.P_Type.Name = "P_Type";
+            this.P_Type.ReadOnly = true;
+            // 
+            // P_Stock
+            // 
+            this.P_Stock.DataPropertyName = "P_Stock";
+            this.P_Stock.HeaderText = "Stock";
+            this.P_Stock.MinimumWidth = 6;
+            this.P_Stock.Name = "P_Stock";
+            this.P_Stock.ReadOnly = true;
             // 
             // nameLabel
             // 
@@ -353,6 +419,7 @@ namespace Gorcery_Management_System
             // 
             // productsPanel
             // 
+            this.productsPanel.Controls.Add(this.btnRefresh);
             this.productsPanel.Controls.Add(this.txtProductStock);
             this.productsPanel.Controls.Add(this.btnProductUpload);
             this.productsPanel.Controls.Add(this.productImageBox);
@@ -572,6 +639,21 @@ namespace Gorcery_Management_System
             this.profilePanel.Size = new System.Drawing.Size(915, 644);
             this.profilePanel.TabIndex = 25;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.Location = new System.Drawing.Point(429, 19);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(96, 39);
+            this.btnRefresh.TabIndex = 26;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // SalesmanDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -642,5 +724,12 @@ namespace Gorcery_Management_System
         private System.Windows.Forms.Label sellerLabel;
         private System.Windows.Forms.Panel upperPanel;
         private System.Windows.Forms.TextBox txtProductStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P_Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P_Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P_Stock;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

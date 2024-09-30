@@ -16,6 +16,7 @@ namespace Gorcery_Management_System
     {
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Personal\Projects\C#\Gorcery_Management_System\Gorcery_Management_Database.mdf;Integrated Security=True;Connect Timeout=30";
         int id;
+        Image PDefaultImage;
         private string PstrFilePath = "";
         private string strFilePath = "";
         Image temp;
@@ -25,6 +26,7 @@ namespace Gorcery_Management_System
         {
             this.id = id;
             InitializeComponent();
+            PDefaultImage = productImageBox.Image;
         }
 
         public void ChangeDashBoardTitle(int id)
@@ -41,17 +43,33 @@ namespace Gorcery_Management_System
             this.ChangeDashBoardTitle(id);
         }
 
+
+        private void ProductInfoClear()
+        {
+            txtID.Text = "";10
+            txtProductName.Text = "";
+            rtxtProductDesc.Text = "";
+            txtProductPrice.Text = "";
+            txtProductType.Text = "";
+            txtProductStock.Text = "";
+            PstrFilePath = "";
+            productImageBox.Image = PDefaultImage;
+        }
+
         private void LoadProductData()
         {
-            string query = "select * from ProductInfoTable where ID = '"+id+"';";
+            string query = "select P_ID, P_Name, P_Description, P_Price, P_Type, P_Stock from ProductInfoTable where ID = '"+id+"';";
             DataTable input = Access.GetData(query);
 
             if (input == null)
             {
                 MessageBox.Show("Something went wrong");
+                return;
             }
+            dgvProducts.AutoGenerateColumns = false;
             dgvProducts.DataSource = input;
             dgvProducts.Refresh();
+            ProductInfoClear();
             dgvProducts.ClearSelection();
         }
 
@@ -136,6 +154,28 @@ namespace Gorcery_Management_System
                 MessageBox.Show("Please select row first");
                 return;
             }
+            var click = MessageBox.Show("Do you want to delete?", "Confirmation", MessageBoxButtons.YesNo);
+            if (click == DialogResult.No)
+            {
+                return;
+            }
+
+            string query = "delete from ProductInfoTable where P_ID = '" + Convert.ToInt32(productId) + "';";
+            var result = Access.ExecuteQuery(query);
+
+            if (result == false)
+            {
+                MessageBox.Show("Error");
+                return;
+            }
+            
+            MessageBox.Show("Product Deleted Successfully");
+            LoadProductData();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadProductData();
         }
 
         private void LoadCellData(int productID)
@@ -148,6 +188,24 @@ namespace Gorcery_Management_System
                 return;
             }
             txtID.Text = result.Rows[0]["P_ID"].ToString();
+            txtProductName.Text = result.Rows[0]["P_Name"].ToString();
+            rtxtProductDesc.Text = result.Rows[0]["P_Description"].ToString();
+            txtProductType.Text = result.Rows[0]["P_Type"].ToString();
+            txtProductPrice.Text = result.Rows[0]["P_Price"].ToString();
+            txtProductStock.Text = result.Rows[0]["P_Stock"].ToString();
+
+            string queryImage = "select P_Image from ProductInfoTable where P_ID = '" + productID + "' ";
+            byte[] imageBytes = Access.GetImage(queryImage);
+
+            if (imageBytes != null)
+            {
+                MemoryStream ms = new MemoryStream(imageBytes);
+                productImageBox.Image = Image.FromStream(ms);
+            }
+            else
+            {
+                productImageBox.Image = PDefaultImage;
+            }
         }
 
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -158,6 +216,9 @@ namespace Gorcery_Management_System
                 this.LoadCellData(productId);
             }
         }
+
+
+
 
         private void btnProfileUpload_Click(object sender, EventArgs e)
         {
@@ -227,7 +288,7 @@ namespace Gorcery_Management_System
                 imageByteArray = stream.ToArray();
 
                 string query = "update UserInfoTable set Name = @Name, Email = @Email, Password = @Password, " +
-                   "Address = @Address, Shopname = @Shopname, Image = @Image WHERE ID = '"+id+"'";
+                   "Address = @Address, Shopname = @Shopname, Image = @Image where ID = '"+id+"'";
 
                 SqlConnection conn = new SqlConnection(connectionString);
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -260,5 +321,6 @@ namespace Gorcery_Management_System
             productsPanel.Hide();
             profilePanel.Show();
         }
+
     }
 }
