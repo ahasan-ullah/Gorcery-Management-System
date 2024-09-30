@@ -130,12 +130,7 @@ namespace Gorcery_Management_System
                 if (result == 1)
                 {
                     MessageBox.Show("Product Added Successfully");
-                    txtProductName.Text="";
-                    rtxtProductDesc.Text="";
-                    txtProductPrice.Text="";
-                    txtProductType.Text="";
-                    txtProductStock.Text="";
-                    PstrFilePath = "";
+                    ProductInfoClear();
                     dgvProducts.ClearSelection();
                 }
                 else
@@ -170,6 +165,63 @@ namespace Gorcery_Management_System
             }
             
             MessageBox.Show("Product Deleted Successfully");
+            LoadProductData();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string pID = txtID.Text;
+            string pName = txtProductName.Text;
+            string PDesc = rtxtProductDesc.Text;
+            string pPrice = txtProductPrice.Text;
+            string pType = txtProductType.Text;
+            string pStock = txtProductStock.Text;
+
+
+            if (pName == "" || PDesc == "" || pPrice == "" || pType == "" || pStock == "")
+            {
+                MessageBox.Show("Please fill all required fields.");
+            }
+            else
+            {
+                byte[] PimageByteArray;
+                try
+                {
+                    Ptemp = new Bitmap(PstrFilePath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Select Image");
+                    return;
+                }
+                MemoryStream stream = new MemoryStream();
+                Ptemp.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                PimageByteArray = stream.ToArray();
+
+                string query = "update ProductInfoTable set P_Name = @PName, P_Description = @PDescription, P_Price = @PPrice, P_Type = @PType, P_Stock = @PStock, P_Image = @PImage where P_ID = '" + pID+"';";
+
+                SqlConnection conn = new SqlConnection(connectionString);
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@PName", pName);
+                cmd.Parameters.AddWithValue("PDescription", PDesc);
+                cmd.Parameters.AddWithValue("@PPrice", pPrice);
+                cmd.Parameters.AddWithValue("@PType", pType);
+                cmd.Parameters.AddWithValue("@PStock", pStock);
+                cmd.Parameters.AddWithValue("@PImage", PimageByteArray);
+
+                conn.Open();
+                int result = cmd.ExecuteNonQuery();
+                if (result == 1)
+                {
+                    MessageBox.Show("Product Updated Successfully");
+                    ProductInfoClear();
+                    dgvProducts.ClearSelection();
+                }
+                else
+                {
+                    MessageBox.Show("Error inserting user data.");
+                }
+            }
             LoadProductData();
         }
 
@@ -218,6 +270,7 @@ namespace Gorcery_Management_System
         }
 
 
+        
 
 
         private void btnProfileUpload_Click(object sender, EventArgs e)
@@ -321,6 +374,5 @@ namespace Gorcery_Management_System
             productsPanel.Hide();
             profilePanel.Show();
         }
-
     }
 }

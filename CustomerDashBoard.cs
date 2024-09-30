@@ -32,8 +32,10 @@ namespace Gorcery_Management_System
         {
             //LoadProductData()
             profilePanel.Hide();
+            LoadProducts();
             this.ChangeDashBoardTitle(id);
         }
+
 
 
         public void ChangeDashBoardTitle(int id)
@@ -127,6 +129,119 @@ namespace Gorcery_Management_System
                 profilePicture.Image = new Bitmap(strFilePath);
             }
         }
+
+
+
+
+
+        public class Product
+        {
+            public int ProductId { get; set; }
+            public string ProductName { get; set; }
+            public string Price { get; set; }
+            public byte[] ImageData { get; set; }
+        }
+
+        private void LoadProducts()
+        {
+            Product[] products = GetProducts();
+            foreach (var product in products)
+            {
+                if (product != null) 
+                {
+                    CreateProductCard(product);
+                }
+            }
+        }
+
+        private Product[] GetProducts()
+        {
+            string query = "select * from ProductInfoTable";
+            DataTable input = Access.GetData(query);
+            if (input == null || input.Rows.Count == 0)
+            {
+                return new Product[0];
+            }
+
+            Product[] products = new Product[input.Rows.Count];
+            for (int i=0;i<input.Rows.Count;i++)
+            {
+                products[i] = new Product
+                {
+                    ProductId = Convert.ToInt32(input.Rows[i]["P_ID"]),
+                    ProductName = input.Rows[i]["P_Name"].ToString(),
+                    Price = input.Rows[i]["P_Price"].ToString(),
+                    ImageData = input.Rows[i]["P_Image"] as byte[]
+                };
+            }
+
+            return products;
+        }
+
+        private void btnBuy_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hi");
+        }
+
+        private void CreateProductCard(Product product)
+        {
+            Panel card = new Panel
+            {
+                Width = 200,
+                Height = 260,
+                BorderStyle = BorderStyle.FixedSingle,
+                Margin = new Padding(10)
+            };
+
+            Label nameLabel = new Label
+            {
+                Text = product.ProductName,
+                Font = new Font("Arial", 10, FontStyle.Regular),
+                Top = 205,
+                Left = 30,
+                AutoSize = true 
+            };
+            Label priceLabel = new Label 
+            {
+                Top = 205,
+                Left = 90,
+                Font = new Font("Arial", 10, FontStyle.Regular),
+                Text ="Price: " + product.Price, 
+                AutoSize = true
+            };
+            PictureBox pictureBox = new PictureBox
+            {
+                Top = 15,
+                Left=15,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Width = 170,
+                Height = 180
+            };
+            if (product.ImageData != null)
+            {
+                MemoryStream ms = new MemoryStream(product.ImageData);
+                pictureBox.Image = Image.FromStream(ms);
+            }
+            Button btnBuy = new Button 
+            {
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                Text = "Buy", 
+                Height=30,
+                BackColor = Color.FromArgb(255, 255, 128, 0),
+                ForeColor = Color.White,
+                Dock = DockStyle.Bottom,
+            };
+            btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
+
+            card.Controls.Add(pictureBox);
+            card.Controls.Add(nameLabel);
+            card.Controls.Add(priceLabel);
+            card.Controls.Add(btnBuy);
+
+            productsPanel.Controls.Add(card);
+            productsPanel.AutoScroll = true;
+        }
+
 
         private void btnProfile_Click(object sender, EventArgs e)
         {

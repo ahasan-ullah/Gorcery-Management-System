@@ -36,32 +36,6 @@ namespace Gorcery_Management_System
             this.upperPanel = new System.Windows.Forms.Panel();
             this.sellerLabel = new System.Windows.Forms.Label();
             this.customerUsernameLabel = new System.Windows.Forms.Label();
-            this.productsPanel = new System.Windows.Forms.Panel();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.txtProductStock = new System.Windows.Forms.TextBox();
-            this.btnProductUpload = new System.Windows.Forms.Button();
-            this.productImageBox = new System.Windows.Forms.PictureBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.txtStock = new System.Windows.Forms.Label();
-            this.txtProductType = new System.Windows.Forms.TextBox();
-            this.typeLabel = new System.Windows.Forms.Label();
-            this.txtProductPrice = new System.Windows.Forms.TextBox();
-            this.priceLabel = new System.Windows.Forms.Label();
-            this.rtxtProductDesc = new System.Windows.Forms.RichTextBox();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.idLabel = new System.Windows.Forms.Label();
-            this.descLabel = new System.Windows.Forms.Label();
-            this.txtProductName = new System.Windows.Forms.TextBox();
-            this.nameLabel = new System.Windows.Forms.Label();
-            this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.P_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.P_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.P_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.P_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.P_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.P_Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.profilePanel = new System.Windows.Forms.Panel();
             this.btnProfileUpdate = new System.Windows.Forms.Button();
             this.txtProfileEmail = new System.Windows.Forms.TextBox();
@@ -76,11 +50,9 @@ namespace Gorcery_Management_System
             this.label2 = new System.Windows.Forms.Label();
             this.btnProfileUpload = new System.Windows.Forms.Button();
             this.profilePicture = new System.Windows.Forms.PictureBox();
+            this.productsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.sidePanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
-            this.productsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productImageBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.profilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
             this.SuspendLayout();
@@ -152,314 +124,6 @@ namespace Gorcery_Management_System
             this.customerUsernameLabel.Size = new System.Drawing.Size(226, 29);
             this.customerUsernameLabel.TabIndex = 2;
             this.customerUsernameLabel.Text = "Customer DashBoard";
-            // 
-            // productsPanel
-            // 
-            this.productsPanel.Controls.Add(this.btnRefresh);
-            this.productsPanel.Controls.Add(this.txtProductStock);
-            this.productsPanel.Controls.Add(this.btnProductUpload);
-            this.productsPanel.Controls.Add(this.productImageBox);
-            this.productsPanel.Controls.Add(this.btnUpdate);
-            this.productsPanel.Controls.Add(this.btnDelete);
-            this.productsPanel.Controls.Add(this.btnAdd);
-            this.productsPanel.Controls.Add(this.txtStock);
-            this.productsPanel.Controls.Add(this.txtProductType);
-            this.productsPanel.Controls.Add(this.typeLabel);
-            this.productsPanel.Controls.Add(this.txtProductPrice);
-            this.productsPanel.Controls.Add(this.priceLabel);
-            this.productsPanel.Controls.Add(this.rtxtProductDesc);
-            this.productsPanel.Controls.Add(this.txtID);
-            this.productsPanel.Controls.Add(this.idLabel);
-            this.productsPanel.Controls.Add(this.descLabel);
-            this.productsPanel.Controls.Add(this.txtProductName);
-            this.productsPanel.Controls.Add(this.nameLabel);
-            this.productsPanel.Controls.Add(this.dgvProducts);
-            this.productsPanel.Location = new System.Drawing.Point(194, 58);
-            this.productsPanel.Name = "productsPanel";
-            this.productsPanel.Size = new System.Drawing.Size(951, 683);
-            this.productsPanel.TabIndex = 27;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(429, 19);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(96, 39);
-            this.btnRefresh.TabIndex = 26;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            // 
-            // txtProductStock
-            // 
-            this.txtProductStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProductStock.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductStock.Location = new System.Drawing.Point(647, 615);
-            this.txtProductStock.Multiline = true;
-            this.txtProductStock.Name = "txtProductStock";
-            this.txtProductStock.Size = new System.Drawing.Size(289, 30);
-            this.txtProductStock.TabIndex = 25;
-            // 
-            // btnProductUpload
-            // 
-            this.btnProductUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnProductUpload.FlatAppearance.BorderSize = 0;
-            this.btnProductUpload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProductUpload.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProductUpload.ForeColor = System.Drawing.Color.White;
-            this.btnProductUpload.Location = new System.Drawing.Point(840, 86);
-            this.btnProductUpload.Name = "btnProductUpload";
-            this.btnProductUpload.Size = new System.Drawing.Size(96, 39);
-            this.btnProductUpload.TabIndex = 24;
-            this.btnProductUpload.Text = "Upload";
-            this.btnProductUpload.UseVisualStyleBackColor = false;
-            // 
-            // productImageBox
-            // 
-            this.productImageBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("productImageBox.BackgroundImage")));
-            this.productImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.productImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.productImageBox.Image = ((System.Drawing.Image)(resources.GetObject("productImageBox.Image")));
-            this.productImageBox.Location = new System.Drawing.Point(647, 13);
-            this.productImageBox.Name = "productImageBox";
-            this.productImageBox.Size = new System.Drawing.Size(157, 160);
-            this.productImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.productImageBox.TabIndex = 23;
-            this.productImageBox.TabStop = false;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(292, 20);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(96, 39);
-            this.btnUpdate.TabIndex = 22;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(155, 20);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(96, 39);
-            this.btnDelete.TabIndex = 21;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(20, 20);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(96, 39);
-            this.btnAdd.TabIndex = 20;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            // 
-            // txtStock
-            // 
-            this.txtStock.AutoSize = true;
-            this.txtStock.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStock.Location = new System.Drawing.Point(642, 574);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(66, 29);
-            this.txtStock.TabIndex = 18;
-            this.txtStock.Text = "Stock";
-            // 
-            // txtProductType
-            // 
-            this.txtProductType.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProductType.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductType.Location = new System.Drawing.Point(647, 530);
-            this.txtProductType.Multiline = true;
-            this.txtProductType.Name = "txtProductType";
-            this.txtProductType.Size = new System.Drawing.Size(289, 30);
-            this.txtProductType.TabIndex = 17;
-            // 
-            // typeLabel
-            // 
-            this.typeLabel.AutoSize = true;
-            this.typeLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.typeLabel.Location = new System.Drawing.Point(642, 498);
-            this.typeLabel.Name = "typeLabel";
-            this.typeLabel.Size = new System.Drawing.Size(60, 29);
-            this.typeLabel.TabIndex = 16;
-            this.typeLabel.Text = "Type";
-            // 
-            // txtProductPrice
-            // 
-            this.txtProductPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProductPrice.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductPrice.Location = new System.Drawing.Point(647, 454);
-            this.txtProductPrice.Multiline = true;
-            this.txtProductPrice.Name = "txtProductPrice";
-            this.txtProductPrice.Size = new System.Drawing.Size(289, 30);
-            this.txtProductPrice.TabIndex = 15;
-            // 
-            // priceLabel
-            // 
-            this.priceLabel.AutoSize = true;
-            this.priceLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceLabel.Location = new System.Drawing.Point(642, 422);
-            this.priceLabel.Name = "priceLabel";
-            this.priceLabel.Size = new System.Drawing.Size(61, 29);
-            this.priceLabel.TabIndex = 14;
-            this.priceLabel.Text = "Price";
-            // 
-            // rtxtProductDesc
-            // 
-            this.rtxtProductDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtxtProductDesc.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtProductDesc.Location = new System.Drawing.Point(647, 309);
-            this.rtxtProductDesc.Name = "rtxtProductDesc";
-            this.rtxtProductDesc.Size = new System.Drawing.Size(289, 96);
-            this.rtxtProductDesc.TabIndex = 13;
-            this.rtxtProductDesc.Text = "";
-            // 
-            // txtID
-            // 
-            this.txtID.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtID.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(104, 103);
-            this.txtID.Multiline = true;
-            this.txtID.Name = "txtID";
-            this.txtID.ReadOnly = true;
-            this.txtID.Size = new System.Drawing.Size(96, 30);
-            this.txtID.TabIndex = 12;
-            // 
-            // idLabel
-            // 
-            this.idLabel.AutoSize = true;
-            this.idLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idLabel.Location = new System.Drawing.Point(15, 103);
-            this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(34, 29);
-            this.idLabel.TabIndex = 11;
-            this.idLabel.Text = "ID";
-            // 
-            // descLabel
-            // 
-            this.descLabel.AutoSize = true;
-            this.descLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descLabel.Location = new System.Drawing.Point(642, 277);
-            this.descLabel.Name = "descLabel";
-            this.descLabel.Size = new System.Drawing.Size(125, 29);
-            this.descLabel.TabIndex = 9;
-            this.descLabel.Text = "Description";
-            // 
-            // txtProductName
-            // 
-            this.txtProductName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProductName.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductName.Location = new System.Drawing.Point(647, 231);
-            this.txtProductName.Multiline = true;
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(289, 30);
-            this.txtProductName.TabIndex = 8;
-            // 
-            // nameLabel
-            // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel.Location = new System.Drawing.Point(642, 199);
-            this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(72, 29);
-            this.nameLabel.TabIndex = 7;
-            this.nameLabel.Text = "Name";
-            // 
-            // dgvProducts
-            // 
-            this.dgvProducts.AllowUserToAddRows = false;
-            this.dgvProducts.AllowUserToDeleteRows = false;
-            this.dgvProducts.AllowUserToResizeColumns = false;
-            this.dgvProducts.AllowUserToResizeRows = false;
-            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProducts.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProducts.ColumnHeadersHeight = 29;
-            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.P_ID,
-            this.P_Name,
-            this.P_Description,
-            this.P_Price,
-            this.P_Type,
-            this.P_Stock});
-            this.dgvProducts.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvProducts.Location = new System.Drawing.Point(20, 162);
-            this.dgvProducts.MultiSelect = false;
-            this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.ReadOnly = true;
-            this.dgvProducts.RowHeadersVisible = false;
-            this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.RowTemplate.Height = 60;
-            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(609, 501);
-            this.dgvProducts.TabIndex = 0;
-            // 
-            // P_ID
-            // 
-            this.P_ID.DataPropertyName = "P_ID";
-            this.P_ID.HeaderText = "ID";
-            this.P_ID.MinimumWidth = 6;
-            this.P_ID.Name = "P_ID";
-            this.P_ID.ReadOnly = true;
-            // 
-            // P_Name
-            // 
-            this.P_Name.DataPropertyName = "P_Name";
-            this.P_Name.HeaderText = "Name";
-            this.P_Name.MinimumWidth = 6;
-            this.P_Name.Name = "P_Name";
-            this.P_Name.ReadOnly = true;
-            // 
-            // P_Description
-            // 
-            this.P_Description.DataPropertyName = "P_Description";
-            this.P_Description.HeaderText = "Description";
-            this.P_Description.MinimumWidth = 6;
-            this.P_Description.Name = "P_Description";
-            this.P_Description.ReadOnly = true;
-            // 
-            // P_Price
-            // 
-            this.P_Price.DataPropertyName = "P_Price";
-            this.P_Price.HeaderText = "Price";
-            this.P_Price.MinimumWidth = 6;
-            this.P_Price.Name = "P_Price";
-            this.P_Price.ReadOnly = true;
-            // 
-            // P_Type
-            // 
-            this.P_Type.DataPropertyName = "P_Type";
-            this.P_Type.HeaderText = "Type";
-            this.P_Type.MinimumWidth = 6;
-            this.P_Type.Name = "P_Type";
-            this.P_Type.ReadOnly = true;
-            // 
-            // P_Stock
-            // 
-            this.P_Stock.DataPropertyName = "P_Stock";
-            this.P_Stock.HeaderText = "Stock";
-            this.P_Stock.MinimumWidth = 6;
-            this.P_Stock.Name = "P_Stock";
-            this.P_Stock.ReadOnly = true;
             // 
             // profilePanel
             // 
@@ -625,6 +289,13 @@ namespace Gorcery_Management_System
             this.profilePicture.TabIndex = 25;
             this.profilePicture.TabStop = false;
             // 
+            // productsPanel
+            // 
+            this.productsPanel.Location = new System.Drawing.Point(203, 58);
+            this.productsPanel.Name = "productsPanel";
+            this.productsPanel.Size = new System.Drawing.Size(964, 683);
+            this.productsPanel.TabIndex = 40;
+            // 
             // CustomerDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -641,10 +312,6 @@ namespace Gorcery_Management_System
             this.sidePanel.ResumeLayout(false);
             this.upperPanel.ResumeLayout(false);
             this.upperPanel.PerformLayout();
-            this.productsPanel.ResumeLayout(false);
-            this.productsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productImageBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.profilePanel.ResumeLayout(false);
             this.profilePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
@@ -660,32 +327,6 @@ namespace Gorcery_Management_System
         private System.Windows.Forms.Panel upperPanel;
         private System.Windows.Forms.Label sellerLabel;
         private System.Windows.Forms.Label customerUsernameLabel;
-        private System.Windows.Forms.Panel productsPanel;
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.TextBox txtProductStock;
-        private System.Windows.Forms.Button btnProductUpload;
-        private System.Windows.Forms.PictureBox productImageBox;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label txtStock;
-        private System.Windows.Forms.TextBox txtProductType;
-        private System.Windows.Forms.Label typeLabel;
-        private System.Windows.Forms.TextBox txtProductPrice;
-        private System.Windows.Forms.Label priceLabel;
-        private System.Windows.Forms.RichTextBox rtxtProductDesc;
-        private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.Label idLabel;
-        private System.Windows.Forms.Label descLabel;
-        private System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.DataGridView dgvProducts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn P_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn P_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn P_Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn P_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn P_Type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn P_Stock;
         private System.Windows.Forms.Panel profilePanel;
         private System.Windows.Forms.Button btnProfileUpdate;
         private System.Windows.Forms.TextBox txtProfileEmail;
@@ -700,5 +341,6 @@ namespace Gorcery_Management_System
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnProfileUpload;
         private System.Windows.Forms.PictureBox profilePicture;
+        private System.Windows.Forms.FlowLayoutPanel productsPanel;
     }
 }
