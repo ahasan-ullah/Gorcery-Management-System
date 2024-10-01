@@ -31,6 +31,8 @@ namespace Gorcery_Management_System
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesmanDashboard));
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnReviews = new System.Windows.Forms.Button();
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.salesmanUsernameLabel = new System.Windows.Forms.Label();
@@ -78,14 +80,12 @@ namespace Gorcery_Management_System
             this.txtProfileShop = new System.Windows.Forms.TextBox();
             this.btnProfileUpdate = new System.Windows.Forms.Button();
             this.profilePanel = new System.Windows.Forms.Panel();
-            this.btnReviews = new System.Windows.Forms.Button();
             this.reviewPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.dgvReview = new System.Windows.Forms.DataGridView();
             this.R_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.R_Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.sidePanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -109,6 +109,32 @@ namespace Gorcery_Management_System
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(188, 701);
             this.sidePanel.TabIndex = 1;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnLogout.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLogout.Location = new System.Drawing.Point(30, 604);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(131, 50);
+            this.btnLogout.TabIndex = 4;
+            this.btnLogout.Text = "Log Out";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnReviews
+            // 
+            this.btnReviews.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnReviews.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReviews.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReviews.Location = new System.Drawing.Point(30, 160);
+            this.btnReviews.Name = "btnReviews";
+            this.btnReviews.Size = new System.Drawing.Size(131, 50);
+            this.btnReviews.TabIndex = 3;
+            this.btnReviews.Text = "Reviews";
+            this.btnReviews.UseVisualStyleBackColor = false;
+            this.btnReviews.Click += new System.EventHandler(this.btnReviews_Click);
             // 
             // btnProfile
             // 
@@ -668,19 +694,6 @@ namespace Gorcery_Management_System
             this.profilePanel.Size = new System.Drawing.Size(915, 644);
             this.profilePanel.TabIndex = 25;
             // 
-            // btnReviews
-            // 
-            this.btnReviews.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnReviews.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReviews.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReviews.Location = new System.Drawing.Point(30, 160);
-            this.btnReviews.Name = "btnReviews";
-            this.btnReviews.Size = new System.Drawing.Size(131, 50);
-            this.btnReviews.TabIndex = 3;
-            this.btnReviews.Text = "Reviews";
-            this.btnReviews.UseVisualStyleBackColor = false;
-            this.btnReviews.Click += new System.EventHandler(this.btnReviews_Click);
-            // 
             // reviewPanel
             // 
             this.reviewPanel.Controls.Add(this.label7);
@@ -689,6 +702,16 @@ namespace Gorcery_Management_System
             this.reviewPanel.Name = "reviewPanel";
             this.reviewPanel.Size = new System.Drawing.Size(976, 660);
             this.reviewPanel.TabIndex = 26;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(330, 71);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(189, 29);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Customer Review";
             // 
             // dgvReview
             // 
@@ -741,29 +764,6 @@ namespace Gorcery_Management_System
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnLogout.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnLogout.Location = new System.Drawing.Point(30, 604);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(131, 50);
-            this.btnLogout.TabIndex = 4;
-            this.btnLogout.Text = "Log Out";
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(330, 71);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(189, 29);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Customer Review";
             // 
             // SalesmanDashboard
             // 

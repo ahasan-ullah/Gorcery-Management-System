@@ -41,6 +41,7 @@ namespace Gorcery_Management_System
             if (txtID.Text == "" || txtPassword.Text == "")
             {
                 MessageBox.Show("Enter ID or Password");
+                return;
             }
             else
             {
@@ -68,7 +69,8 @@ namespace Gorcery_Management_System
                     }
                     else if (type == "Admin")
                     {
-                        //
+                        this.Hide();
+                        new AdminDashboard(id).Show();
                     }
                     else
                     {

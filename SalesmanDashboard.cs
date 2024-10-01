@@ -231,6 +231,9 @@ namespace Gorcery_Management_System
             LoadProductData();
         }
 
+
+
+
         private void LoadCellData(int productID)
         {
             string query = "select * from ProductInfoTable where P_ID = '" + productID + "';";
@@ -375,6 +378,11 @@ namespace Gorcery_Management_System
                 LoadProfileInfo();
             }
         }
+
+
+
+
+
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
