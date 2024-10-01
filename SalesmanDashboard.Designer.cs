@@ -180,6 +180,7 @@ namespace Gorcery_Management_System
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 60;
+            this.dgvProducts.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(609, 501);
             this.dgvProducts.TabIndex = 0;

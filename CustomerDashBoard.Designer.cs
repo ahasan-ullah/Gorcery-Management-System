@@ -31,6 +31,8 @@ namespace Gorcery_Management_System
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerDashBoard));
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.btnHistory = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.btnProfile = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.upperPanel = new System.Windows.Forms.Panel();
@@ -51,15 +53,36 @@ namespace Gorcery_Management_System
             this.btnProfileUpload = new System.Windows.Forms.Button();
             this.profilePicture = new System.Windows.Forms.PictureBox();
             this.productsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.historyPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dgvHistory = new System.Windows.Forms.DataGridView();
+            this.O_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.O_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.O_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.O_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReview = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvReview = new System.Windows.Forms.DataGridView();
+            this.R_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.R_Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.P_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
             this.sidePanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             this.profilePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).BeginInit();
+            this.historyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReview)).BeginInit();
             this.SuspendLayout();
             // 
             // sidePanel
             // 
             this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.sidePanel.Controls.Add(this.btnReview);
+            this.sidePanel.Controls.Add(this.btnHistory);
+            this.sidePanel.Controls.Add(this.btnLogout);
             this.sidePanel.Controls.Add(this.btnProfile);
             this.sidePanel.Controls.Add(this.btnProduct);
             this.sidePanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -68,12 +91,38 @@ namespace Gorcery_Management_System
             this.sidePanel.Size = new System.Drawing.Size(188, 701);
             this.sidePanel.TabIndex = 28;
             // 
+            // btnHistory
+            // 
+            this.btnHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnHistory.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnHistory.Location = new System.Drawing.Point(30, 234);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.Size = new System.Drawing.Size(131, 50);
+            this.btnHistory.TabIndex = 4;
+            this.btnHistory.Text = "History";
+            this.btnHistory.UseVisualStyleBackColor = false;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnLogout.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnLogout.Location = new System.Drawing.Point(30, 604);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(131, 50);
+            this.btnLogout.TabIndex = 3;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // btnProfile
             // 
             this.btnProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.btnProfile.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProfile.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnProfile.Location = new System.Drawing.Point(30, 168);
+            this.btnProfile.Location = new System.Drawing.Point(30, 131);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(131, 50);
             this.btnProfile.TabIndex = 2;
@@ -291,16 +340,182 @@ namespace Gorcery_Management_System
             // 
             // productsPanel
             // 
-            this.productsPanel.Location = new System.Drawing.Point(203, 58);
+            this.productsPanel.Location = new System.Drawing.Point(226, 58);
             this.productsPanel.Name = "productsPanel";
-            this.productsPanel.Size = new System.Drawing.Size(964, 683);
+            this.productsPanel.Size = new System.Drawing.Size(941, 663);
             this.productsPanel.TabIndex = 40;
+            // 
+            // historyPanel
+            // 
+            this.historyPanel.Controls.Add(this.label6);
+            this.historyPanel.Controls.Add(this.dgvHistory);
+            this.historyPanel.Location = new System.Drawing.Point(207, 65);
+            this.historyPanel.Name = "historyPanel";
+            this.historyPanel.Size = new System.Drawing.Size(963, 619);
+            this.historyPanel.TabIndex = 40;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(362, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(182, 29);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Purchase History";
+            // 
+            // dgvHistory
+            // 
+            this.dgvHistory.AllowUserToAddRows = false;
+            this.dgvHistory.AllowUserToDeleteRows = false;
+            this.dgvHistory.AllowUserToResizeColumns = false;
+            this.dgvHistory.AllowUserToResizeRows = false;
+            this.dgvHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHistory.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.O_ID,
+            this.O_Date,
+            this.O_Price,
+            this.O_Type});
+            this.dgvHistory.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvHistory.Location = new System.Drawing.Point(87, 106);
+            this.dgvHistory.MultiSelect = false;
+            this.dgvHistory.Name = "dgvHistory";
+            this.dgvHistory.ReadOnly = true;
+            this.dgvHistory.RowHeadersVisible = false;
+            this.dgvHistory.RowHeadersWidth = 51;
+            this.dgvHistory.RowTemplate.Height = 30;
+            this.dgvHistory.RowTemplate.ReadOnly = true;
+            this.dgvHistory.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvHistory.Size = new System.Drawing.Size(804, 535);
+            this.dgvHistory.TabIndex = 5;
+            // 
+            // O_ID
+            // 
+            this.O_ID.DataPropertyName = "O_ID";
+            this.O_ID.HeaderText = "Order ID";
+            this.O_ID.MinimumWidth = 6;
+            this.O_ID.Name = "O_ID";
+            this.O_ID.ReadOnly = true;
+            // 
+            // O_Date
+            // 
+            this.O_Date.DataPropertyName = "O_Date";
+            this.O_Date.HeaderText = "Order Date";
+            this.O_Date.MinimumWidth = 6;
+            this.O_Date.Name = "O_Date";
+            this.O_Date.ReadOnly = true;
+            // 
+            // O_Price
+            // 
+            this.O_Price.DataPropertyName = "O_Price";
+            this.O_Price.HeaderText = "Product Price";
+            this.O_Price.MinimumWidth = 6;
+            this.O_Price.Name = "O_Price";
+            this.O_Price.ReadOnly = true;
+            // 
+            // O_Type
+            // 
+            this.O_Type.DataPropertyName = "O_Type";
+            this.O_Type.HeaderText = "Product Type";
+            this.O_Type.MinimumWidth = 6;
+            this.O_Type.Name = "O_Type";
+            this.O_Type.ReadOnly = true;
+            // 
+            // btnReview
+            // 
+            this.btnReview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnReview.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReview.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReview.Location = new System.Drawing.Point(30, 340);
+            this.btnReview.Name = "btnReview";
+            this.btnReview.Size = new System.Drawing.Size(131, 50);
+            this.btnReview.TabIndex = 5;
+            this.btnReview.Text = "Reviews";
+            this.btnReview.UseVisualStyleBackColor = false;
+            this.btnReview.Click += new System.EventHandler(this.btnReview_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.dgvReview);
+            this.panel1.Location = new System.Drawing.Point(194, 68);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(973, 593);
+            this.panel1.TabIndex = 41;
+            // 
+            // dgvReview
+            // 
+            this.dgvReview.AllowUserToAddRows = false;
+            this.dgvReview.AllowUserToDeleteRows = false;
+            this.dgvReview.AllowUserToResizeColumns = false;
+            this.dgvReview.AllowUserToResizeRows = false;
+            this.dgvReview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReview.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvReview.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvReview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.R_Date,
+            this.R_Comment,
+            this.P_ID});
+            this.dgvReview.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvReview.Location = new System.Drawing.Point(78, 159);
+            this.dgvReview.MultiSelect = false;
+            this.dgvReview.Name = "dgvReview";
+            this.dgvReview.ReadOnly = true;
+            this.dgvReview.RowHeadersVisible = false;
+            this.dgvReview.RowHeadersWidth = 51;
+            this.dgvReview.RowTemplate.Height = 30;
+            this.dgvReview.RowTemplate.ReadOnly = true;
+            this.dgvReview.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvReview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReview.Size = new System.Drawing.Size(804, 408);
+            this.dgvReview.TabIndex = 6;
+            // 
+            // R_Date
+            // 
+            this.R_Date.DataPropertyName = "R_Date";
+            this.R_Date.HeaderText = "Review Date";
+            this.R_Date.MinimumWidth = 6;
+            this.R_Date.Name = "R_Date";
+            this.R_Date.ReadOnly = true;
+            // 
+            // R_Comment
+            // 
+            this.R_Comment.DataPropertyName = "R_Comment";
+            this.R_Comment.HeaderText = "Review";
+            this.R_Comment.MinimumWidth = 6;
+            this.R_Comment.Name = "R_Comment";
+            this.R_Comment.ReadOnly = true;
+            // 
+            // P_ID
+            // 
+            this.P_ID.DataPropertyName = "P_ID";
+            this.P_ID.HeaderText = "Product ID";
+            this.P_ID.MinimumWidth = 6;
+            this.P_ID.Name = "P_ID";
+            this.P_ID.ReadOnly = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(396, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(133, 29);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "My Reviews";
             // 
             // CustomerDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 753);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.historyPanel);
             this.Controls.Add(this.profilePanel);
             this.Controls.Add(this.sidePanel);
             this.Controls.Add(this.upperPanel);
@@ -315,6 +530,12 @@ namespace Gorcery_Management_System
             this.profilePanel.ResumeLayout(false);
             this.profilePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePicture)).EndInit();
+            this.historyPanel.ResumeLayout(false);
+            this.historyPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistory)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -342,5 +563,21 @@ namespace Gorcery_Management_System
         private System.Windows.Forms.Button btnProfileUpload;
         private System.Windows.Forms.PictureBox profilePicture;
         private System.Windows.Forms.FlowLayoutPanel productsPanel;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnHistory;
+        private System.Windows.Forms.Panel historyPanel;
+        private System.Windows.Forms.DataGridView dgvHistory;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn O_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn O_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn O_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn O_Type;
+        private System.Windows.Forms.Button btnReview;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dgvReview;
+        private System.Windows.Forms.DataGridViewTextBoxColumn R_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn R_Comment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P_ID;
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace Gorcery_Management_System
 {
@@ -30,8 +31,9 @@ namespace Gorcery_Management_System
 
         private void CustomerDashBoard_Load(object sender, EventArgs e)
         {
-            //LoadProductData()
+            historyPanel.Hide();
             profilePanel.Hide();
+            panel1.Hide();
             LoadProducts();
             this.ChangeDashBoardTitle(id);
         }
@@ -132,6 +134,40 @@ namespace Gorcery_Management_System
 
 
 
+        private void LoadPurchaseHistory()
+        {
+            string query = "select O_ID, O_Date, O_Price, O_Type from CustomerOrderTable where C_ID = '"+id+"';";
+            DataTable input = Access.GetData(query);
+
+            if (input == null)
+            {
+                MessageBox.Show("Something went wrong");
+                return;
+            }
+            dgvHistory.AutoGenerateColumns = false;
+            dgvHistory.DataSource = input;
+            dgvHistory.Refresh();
+            dgvHistory.ClearSelection();
+        }
+
+        private void LoadReviews()
+        {
+            string query = "select R_Date, R_Comment, P_ID from SalesmenReviewTable where C_ID = '" + id + "';";
+            DataTable input = Access.GetData(query);
+
+            if (input == null)
+            {
+                MessageBox.Show("Something went wrong");
+                return;
+            }
+            dgvReview.AutoGenerateColumns = false;
+            dgvReview.DataSource = input;
+            dgvReview.Refresh();
+            dgvReview.ClearSelection();
+        }
+
+
+
 
 
         public class Product
@@ -139,6 +175,7 @@ namespace Gorcery_Management_System
             public int ProductId { get; set; }
             public string ProductName { get; set; }
             public string Price { get; set; }
+            public string Type { get; set; }
             public byte[] ImageData { get; set; }
         }
 
@@ -171,6 +208,7 @@ namespace Gorcery_Management_System
                     ProductId = Convert.ToInt32(input.Rows[i]["P_ID"]),
                     ProductName = input.Rows[i]["P_Name"].ToString(),
                     Price = input.Rows[i]["P_Price"].ToString(),
+                    Type = input.Rows[i]["P_Type"].ToString(),
                     ImageData = input.Rows[i]["P_Image"] as byte[]
                 };
             }
@@ -183,10 +221,35 @@ namespace Gorcery_Management_System
             Button ifCLicked = sender as Button; 
             if (ifCLicked != null && ifCLicked.Tag is Product product)
             {
-                MessageBox.Show(product.ProductName + "\n" + product.Price);
+                var click = MessageBox.Show("Do you want to purchase this product?", "Confirmation", MessageBoxButtons.YesNo);
+                if (click == DialogResult.No)
+                {
+                    return;
+                }
+                //MessageBox.Show(product.ProductName + "\n" + product.Price);
+                string currentTime = DateTime.Now.ToString("MM-dd-yyyy HH:mm:ss");
+                string query = "insert into CustomerOrderTable (O_Date,O_Price,O_Type,C_ID,P_ID)" +
+                    " values ('" + currentTime + "','" + product.Price + "','" + product.Type + "','" + id + "','" + product.ProductId + "')";
+                var result = Access.ExecuteQuery(query);
+                if (result == true)
+                {
+                    MessageBox.Show("Product Purchased Successfully!");
+                    var reviewBox = MessageBox.Show("Do you want togive feedback?", "Confirmation", MessageBoxButtons.YesNo);
+                    if (reviewBox == DialogResult.No)
+                    {
+                        return;
+                    }
+                    string review = Interaction.InputBox("Give Your Valueable Feedback \n So that we can improve our service", "FeedBack");
+                    string query2 = "insert into SalesmenReviewTable (R_Comment,R_Date,C_ID,P_ID)" +
+                    " values ('" + review + "','" + currentTime + "','" + id + "','" + product.ProductId + "')";
+                    var result2 = Access.ExecuteQuery(query2);
+                    if (result2 == true)
+                    {
+                        MessageBox.Show("Thanks for your valueable feedback! \n Happy Shopping");
+                    }
+                }
             }
         }
-
 
         private void CreateProductCard(Product product)
         {
@@ -203,13 +266,13 @@ namespace Gorcery_Management_System
                 Text = product.ProductName,
                 Font = new Font("Arial", 10, FontStyle.Regular),
                 Top = 205,
-                Left = 30,
+                Left = 20,
                 AutoSize = true 
             };
             Label priceLabel = new Label 
             {
                 Top = 205,
-                Left = 90,
+                Left = 100,
                 Font = new Font("Arial", 10, FontStyle.Regular),
                 Text ="Price: " + product.Price, 
                 AutoSize = true
@@ -250,11 +313,15 @@ namespace Gorcery_Management_System
         }
 
 
+
+
         private void btnProfile_Click(object sender, EventArgs e)
         {
             LoadProfileInfo();
             productsPanel.Hide();
             profilePanel.Show();
+            historyPanel.Hide();
+            panel1.Hide();
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
@@ -262,6 +329,34 @@ namespace Gorcery_Management_System
             //LoadProductData();
             productsPanel.Show();
             profilePanel.Hide();
+            historyPanel.Hide();
+            panel1.Hide();
         }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            productsPanel.Hide();
+            profilePanel.Hide();
+            LoadPurchaseHistory();
+            historyPanel.Show();
+            panel1.Hide();
+        }
+
+        private void btnReview_Click(object sender, EventArgs e)
+        {
+            productsPanel.Hide();
+            profilePanel.Hide();
+            historyPanel.Hide();
+            LoadReviews();
+            panel1.Show();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            new SignIn().Show();
+        }
+
+        
     }
 }
