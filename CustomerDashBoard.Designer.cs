@@ -31,6 +31,7 @@ namespace Gorcery_Management_System
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerDashBoard));
             this.sidePanel = new System.Windows.Forms.Panel();
+            this.btnReview = new System.Windows.Forms.Button();
             this.btnHistory = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnProfile = new System.Windows.Forms.Button();
@@ -60,13 +61,12 @@ namespace Gorcery_Management_System
             this.O_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.O_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.O_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnReview = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.dgvReview = new System.Windows.Forms.DataGridView();
             this.R_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.R_Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.P_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label7 = new System.Windows.Forms.Label();
             this.sidePanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             this.profilePanel.SuspendLayout();
@@ -91,12 +91,25 @@ namespace Gorcery_Management_System
             this.sidePanel.Size = new System.Drawing.Size(188, 701);
             this.sidePanel.TabIndex = 28;
             // 
+            // btnReview
+            // 
+            this.btnReview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
+            this.btnReview.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReview.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReview.Location = new System.Drawing.Point(30, 257);
+            this.btnReview.Name = "btnReview";
+            this.btnReview.Size = new System.Drawing.Size(131, 50);
+            this.btnReview.TabIndex = 5;
+            this.btnReview.Text = "Reviews";
+            this.btnReview.UseVisualStyleBackColor = false;
+            this.btnReview.Click += new System.EventHandler(this.btnReview_Click);
+            // 
             // btnHistory
             // 
             this.btnHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.btnHistory.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHistory.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnHistory.Location = new System.Drawing.Point(30, 234);
+            this.btnHistory.Location = new System.Drawing.Point(30, 145);
             this.btnHistory.Name = "btnHistory";
             this.btnHistory.Size = new System.Drawing.Size(131, 50);
             this.btnHistory.TabIndex = 4;
@@ -122,7 +135,7 @@ namespace Gorcery_Management_System
             this.btnProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
             this.btnProfile.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProfile.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnProfile.Location = new System.Drawing.Point(30, 131);
+            this.btnProfile.Location = new System.Drawing.Point(30, 363);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(131, 50);
             this.btnProfile.TabIndex = 2;
@@ -425,19 +438,6 @@ namespace Gorcery_Management_System
             this.O_Type.Name = "O_Type";
             this.O_Type.ReadOnly = true;
             // 
-            // btnReview
-            // 
-            this.btnReview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(24)))), ((int)(((byte)(29)))));
-            this.btnReview.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReview.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReview.Location = new System.Drawing.Point(30, 340);
-            this.btnReview.Name = "btnReview";
-            this.btnReview.Size = new System.Drawing.Size(131, 50);
-            this.btnReview.TabIndex = 5;
-            this.btnReview.Text = "Reviews";
-            this.btnReview.UseVisualStyleBackColor = false;
-            this.btnReview.Click += new System.EventHandler(this.btnReview_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label7);
@@ -446,6 +446,16 @@ namespace Gorcery_Management_System
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(973, 593);
             this.panel1.TabIndex = 41;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(396, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(133, 29);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "My Reviews";
             // 
             // dgvReview
             // 
@@ -498,16 +508,6 @@ namespace Gorcery_Management_System
             this.P_ID.MinimumWidth = 6;
             this.P_ID.Name = "P_ID";
             this.P_ID.ReadOnly = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(396, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 29);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "My Reviews";
             // 
             // CustomerDashBoard
             // 

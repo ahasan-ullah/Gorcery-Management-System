@@ -40,6 +40,7 @@ namespace Gorcery_Management_System
         {
             LoadProductData();
             profilePanel.Hide();
+            reviewPanel.Hide();
             this.ChangeDashBoardTitle(id);
         }
 
@@ -269,8 +270,22 @@ namespace Gorcery_Management_System
             }
         }
 
+        private void LoadReviews()
+        {
+            string query = "select R.R_Date,R.R_Comment,P.P_ID,P.P_Name,P.P_Type from SalesmenReviewTable as R join ProductInfoTable as P on R.P_ID = P.P_ID where P.ID = '"+id+"';";
+            DataTable input = Access.GetData(query);
 
-        
+            if (input == null)
+            {
+                MessageBox.Show("Something went wrong");
+                return;
+            }
+            dgvReview.AutoGenerateColumns = false;
+            dgvReview.DataSource = input;
+            dgvReview.Refresh();
+            dgvReview.ClearSelection();
+        }
+
 
 
         private void btnProfileUpload_Click(object sender, EventArgs e)
@@ -366,6 +381,7 @@ namespace Gorcery_Management_System
             LoadProductData();
             productsPanel.Show();
             profilePanel.Hide();
+            reviewPanel.Hide();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
@@ -373,6 +389,21 @@ namespace Gorcery_Management_System
             LoadProfileInfo();
             productsPanel.Hide();
             profilePanel.Show();
+            reviewPanel.Hide();
+        }
+
+        private void btnReviews_Click(object sender, EventArgs e)
+        {
+            productsPanel.Hide();
+            profilePanel.Hide();
+            LoadReviews();
+            reviewPanel.Show();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            new SignIn().Show();
         }
     }
 }
