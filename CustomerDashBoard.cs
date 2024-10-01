@@ -180,8 +180,13 @@ namespace Gorcery_Management_System
 
         private void btnBuy_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hi");
+            Button ifCLicked = sender as Button; 
+            if (ifCLicked != null && ifCLicked.Tag is Product product)
+            {
+                MessageBox.Show(product.ProductName + "\n" + product.Price);
+            }
         }
+
 
         private void CreateProductCard(Product product)
         {
@@ -231,6 +236,8 @@ namespace Gorcery_Management_System
                 ForeColor = Color.White,
                 Dock = DockStyle.Bottom,
             };
+
+            btnBuy.Tag = product;
             btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
 
             card.Controls.Add(pictureBox);

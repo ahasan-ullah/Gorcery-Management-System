@@ -119,5 +119,8 @@
   <ItemGroup>
     <Folder Include="Assets\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="NewFile1.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
