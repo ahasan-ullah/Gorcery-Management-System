@@ -30,6 +30,7 @@ namespace Gorcery_Management_System
         {
             profilePanel.Hide();
             userPanel.Hide();
+            reviewPanel.Hide();
             ADefaultImage = adminImageBox.Image;
             PDefaultImage = productImageBox.Image;
             this.ChangeDashBoardTitle(id);
@@ -215,6 +216,22 @@ namespace Gorcery_Management_System
             dgvProducts.ClearSelection();
         }
 
+        private void LoadReviews()
+        {
+            string query = "select R_Date,R_Comment,P_ID,C_ID from SalesmenReviewTable;";
+            DataTable input = Access.GetData(query);
+
+            if (input == null)
+            {
+                MessageBox.Show("Something went wrong");
+                return;
+            }
+            dgvReview.AutoGenerateColumns = false;
+            dgvReview.DataSource = input;
+            dgvReview.Refresh();
+            dgvReview.ClearSelection();
+        }
+
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -231,6 +248,7 @@ namespace Gorcery_Management_System
             LoadAdminInfo();
             userPanel.Show();
             productsPanel.Hide();
+            reviewPanel.Hide();
         }
 
         private void btnProfile_Click(object sender, EventArgs e)
@@ -239,6 +257,7 @@ namespace Gorcery_Management_System
             profilePanel.Show();
             userPanel.Hide();
             productsPanel.Hide();
+            reviewPanel.Hide();
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
@@ -247,6 +266,7 @@ namespace Gorcery_Management_System
             userPanel.Hide();
             LoadProducts();
             productsPanel.Show();
+            reviewPanel.Hide();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -310,6 +330,15 @@ namespace Gorcery_Management_System
                 MessageBox.Show("Profile Successfully Updated");
                 LoadProfileInfo();
             }
+        }
+
+        private void btnReviews_Click(object sender, EventArgs e)
+        {
+            profilePanel.Hide();
+            userPanel.Hide();
+            productsPanel.Hide();
+            LoadReviews();
+            reviewPanel.Show();
         }
     }
 }
