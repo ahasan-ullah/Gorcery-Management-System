@@ -120,10 +120,10 @@ namespace Gorcery_Management_System
 
         private void btnAdminDelete_Click(object sender, EventArgs e)
         {
-            string id = txtAdminID.Text;
-            if (id == "")
+            string adminID = txtAdminID.Text;
+            if (adminID == "")
             {
-                MessageBox.Show("Select select user to delete");
+                MessageBox.Show("Please select user to delete");
                 return;
             }
             var click = MessageBox.Show("Do you want to delete?", "Confirmation", MessageBoxButtons.YesNo);
@@ -160,7 +160,7 @@ namespace Gorcery_Management_System
             string productID = txtProductID.Text;
             if (productID == "")
             {
-                MessageBox.Show("Select select user to delete");
+                MessageBox.Show("Please select product to delete");
                 return;
             }
             var click = MessageBox.Show("Do you want to delete?", "Confirmation", MessageBoxButtons.YesNo);
