@@ -4,8 +4,9 @@ It is a desktop based application for grocery management system where user can
  - Buy Product
  - Manage Product
 
-## Live Website Link
-(https://hungry-naki-7db9a.web.app/)
+## To use this software
+ - You need to add your own database and database connection string
+ - For any further query you can email me.
 
 ## Data Management
 - **Microsoft SQL Database**
